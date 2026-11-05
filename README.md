@@ -22,7 +22,6 @@ npm install
 
 # 2. Set up environment variables
 cp .env.example .env 
-# (On Windows: Copy-Item .env.example .env)
 
 # 3. Edit .env to set your JWT_SECRET and bootstrap admin credentials
 
