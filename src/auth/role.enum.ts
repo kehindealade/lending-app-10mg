@@ -12,6 +12,7 @@ export interface AuthUser {
   tenantId: string;
 }
 
+// every jwt token has these values when decoded so uou can't switch tenant 
 export interface JwtPayload {
   sub: string;
   role: Role;
