@@ -1,5 +1,5 @@
 import { Body, Controller, Post } from '@nestjs/common';
-import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login.dto';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -13,6 +13,10 @@ import { AuthUser, Role } from './role.enum';
 export class AuthController {
   constructor(private readonly auth: AuthService) {}
 
+  @ApiOperation({
+    summary: '[PUBLIC] Log in',
+    description: 'checks email and password and returns a JWT access token.',
+  })
   @Public()
   @Post('login')
   login(@Body() dto: LoginDto) {
@@ -20,6 +24,10 @@ export class AuthController {
   }
 
   @ApiBearerAuth()
+  @ApiOperation({
+    summary: '[TENANT_ADMIN] Create a user',
+    description: "creates a tenant admin, loan officer or customer",
+  })
   @Roles(Role.TENANT_ADMIN)
   @Post('users')
   createUser(@CurrentUser() user: AuthUser, @Body() dto: CreateUserDto) {
