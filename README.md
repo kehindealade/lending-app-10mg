@@ -30,3 +30,6 @@ docker compose up -d
 
 # 5. Start the API
 npm run start:dev
+
+# 6. Access the docs
+[http://localhost:3000/api](http://localhost:3000/api)
