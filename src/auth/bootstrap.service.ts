@@ -19,7 +19,8 @@ export class BootstrapService implements OnApplicationBootstrap {
     const email = this.config.getOrThrow<string>('BOOTSTRAP_ADMIN_EMAIL').trim().toLowerCase();
     const password = this.config.getOrThrow<string>('BOOTSTRAP_ADMIN_PASSWORD');
     const existing = await this.users.findOneBy({ email });
-
+   
+    //create first test super-admin
     if (existing) {
       if (existing.role !== Role.SUPER_ADMIN) {
         throw new Error('Bootstrap email belongs to another account');
