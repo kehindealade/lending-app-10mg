@@ -5,7 +5,7 @@ A simplified, multi-tenant lending backend built with NestJS, Postgres, Redis, a
 ## Features
 
 * **Multi-Tenancy:** Single shared database schema with strict isolation.
-* **Auth:** JWT authentication with 4 distinct roles.
+* **Auth:** JWT authentication with 4 distinct roles with tenant id not being sent in body but encoded inside bearer token.
 * **Lending Lifecycle:** Loan products, applications, mock credit checks, disbursement, and repayment.
 * **Data Integrity:** Postgres transactions, pessimistic locking, and audit logs.
 * **Idempotency:** Postgres-backed with Redis caching to prevent duplicate transactions.
